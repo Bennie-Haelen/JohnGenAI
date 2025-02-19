@@ -10,13 +10,13 @@ from prompts.read_prompt_template import read_prompt_template
 from prompts import prompt_names
 from logger_setup import logger, log_entry_exit
 
-llm_model = "gpt-4o"
-name = "John"
+LLM_MODEL = "gpt-4o"
+NAME      = "John"
 
 def main():
 
     # Initialize the Language Model (LLM)
-    llm = get_llm(llm_model)
+    llm = get_llm(LLM_MODEL)
 
     prompt_name = prompt_names.TEST_PROMPT
     prompt_template_str = read_prompt_template(prompt_name)
@@ -27,7 +27,7 @@ def main():
         input_variables=["name"], template=prompt_template_str)
 
     # Format the prompt by injecting the FHIR resource name
-    prompt = prompt_template.format(name = name)
+    prompt = prompt_template.format(name=NAME)
     logger.info(f"Prompt after formatting: {prompt}")
 
     # Create a message array containing the formatted prompt
